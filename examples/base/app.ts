@@ -74,7 +74,7 @@ axios({
   method: 'post',
   url: '/base/post',
   headers: {
-    'content-type': 'application/json;charset=utf-8'
+    'content-type': 'application/json;charset=utf-8', 'custom-header': '123321'
   },
   data: {
     a: 1,
@@ -100,25 +100,35 @@ axios({
   data: searchParams
 })
 
-// axios({
-//   method: 'post',
-//   url: '/base/post',
-//   data: {
-//     a: 1,
-//     b: 2
-//   }
-// }).then((res) => {
-//   console.log(res)
-// })
+var f = new FormData()
+f.append('a', 'hhh')
+f.append('b', 'abc')
 
-// axios({
-//   method: 'post',
-//   url: '/base/post',
-//   responseType: 'json',
-//   data: {
-//     a: 3,
-//     b: 4
-//   }
-// }).then((res) => {
-//   console.log(res)
-// })
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: f
+})
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: {
+    a: 1,
+    b: 2
+  }
+}).then((res) => {
+  console.log(res)
+})
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  responseType: 'json',
+  data: {
+    a: 3,
+    b: 4
+  }
+}).then((res) => {
+  console.log(res)
+})
